@@ -10,5 +10,7 @@ RUN echo '%theia ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 # See https://wiki.alpinelinux.org/wiki/Setting_up_a_new_user#addgroup
 RUN addgroup theia wheel
+# add some extra php packages (required by php-unit)
+RUN apk add php-dom php-xml php-mbstring php-xmlreader php-xmlwriter
 # switch user to theia
 USER theia
