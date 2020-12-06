@@ -10,7 +10,9 @@ RUN echo '%theia ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 # See https://wiki.alpinelinux.org/wiki/Setting_up_a_new_user#addgroup
 RUN addgroup theia wheel
+# add extra packages
+RUN apk add g++ gcc make python
 # upgrade terminal
-RUN echo 'export PS1="\u@\h \W \\$ "' >> /etc/profile
+RUN echo 'export PS1="\w \\$ "' >> /home/theia/.bashrc
 # switch user to theia
 USER theia
